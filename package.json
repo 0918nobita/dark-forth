@@ -1,0 +1,16 @@
+{
+  "name": "forth-book",
+  "version": "1.0.0",
+  "scripts": {
+    "pdf": "gitbook pdf ./forth-book ./forth-book.pdf",
+    "epub": "gitbook epub ./forth-book ./forth-book.epub"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "gitbook": "^2.6.9",
+    "gitbook-cli": "^2.3.2",
+    "svgexport": "^0.3.2"
+  }
+}
