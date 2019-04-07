@@ -9,3 +9,29 @@
 - ``IMMEDIATE`` / ``POSTPONE`` ワードについて
 - メモリ操作ワード・変数・配列・固定長文字列について
 - Compilation Words を用いたマクロの作成
+
+## 環境構築
+
+yarn を事前にインストールしてください。
+
+```bash
+yarn install
+```
+
+### Web 版のサーバ起動
+
+```bash
+yarn serve
+```
+
+### PDF 版の出力
+
+```bash
+yarn pdf
+```
+
+## EPUB 版の出力
+
+```bash
+yarn epub
+```
