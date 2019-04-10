@@ -2,9 +2,13 @@
 
 実行環境として Gforth を導入します。
 
-### macOS を利用している方
+### Windows
+
+### macOS
 
 Homebrew を利用してインストールできます。
+
+### Linux
 
 ```bash
 brew install gforth
