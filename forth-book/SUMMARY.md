@@ -11,7 +11,7 @@
   * [制御構造・コンパイル意味論]()
   * [メモリ操作]()
   * [変数・定数]()
-  * [配列・文字列]()
+  * [配列・文字列](array_string.md)
   * [XT](execution_token.md)
   * [IMMEDIATE / POSTPONE]()
   * [エラーハンドリング]()
