@@ -10,7 +10,7 @@
   * [小数スタック]()
   * [制御構造・コンパイル意味論]()
   * [メモリ操作]()
-  * [変数・定数]()
+  * [変数・定数](variable_constant.md)
   * [配列・文字列](array_string.md)
   * [XT](execution_token.md)
   * [IMMEDIATE / POSTPONE]()
