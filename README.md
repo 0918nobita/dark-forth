@@ -1,6 +1,9 @@
-# Forth 入門書
+# DARK FORTH
 
-- タイトル未定
+[![Build Status](https://travis-ci.org/0918nobita/forth-book.svg?branch=master)](https://travis-ci.org/0918nobita/forth-book)
+
+- FORTH 言語の入門書
+- GitHub Pages で内容を無料公開
 - A5 サイズ無線綴じ製本冊子にして、技術同人誌として販売したい
 
 ## 内容
