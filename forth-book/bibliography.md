@@ -6,3 +6,4 @@
 - Forth 200x: Compatibility analysis <br>http://www.forth200x.org/documents/html/diff.html
 - FIG-Forth Implementations<br>http://www.forth.org/fig-forth/contents.html
 - 池野信一・金山豊作 (1982) 『FORTHへの招待』
+- Gforth Manual<br>http://gforth.org/manual/
