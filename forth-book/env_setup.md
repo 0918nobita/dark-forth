@@ -14,6 +14,18 @@ brew install gforth
 
 ### Linux
 
+#### Ubuntu
+
+以下のコマンドでインストールできます。
+
+```bash
+sudo apt-get install gforth
+```
+
+#### Arch Linux
+
+AUR で提供されています。(著者は ``yay`` を用いてインストールしました)
+
 ### コラム1: Forth 処理系探訪
 
 Forth の処理系は多数存在しており、実行形式や対応している標準仕様がそれぞれ異なっています。
