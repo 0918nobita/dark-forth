@@ -4,6 +4,8 @@
 * [環境構築](env_setup.md)
 * [基本仕様の理解]()
   * [シンタックス](syntax.md)
+  * [HELLO, FORTH!](hello_forth.md)
+  * [処理系をクラッシュさせる](crash_course.md)
   * [辞書・データスタック・解釈意味論]()
   * [算術操作](arithmetic_operations.md)
   * [ワードの定義・実行/走行時意味論]()
