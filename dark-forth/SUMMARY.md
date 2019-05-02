@@ -7,6 +7,7 @@
   * [HELLO, FORTH!](hello_forth.md)
   * [処理系をクラッシュさせる](crash_course.md)
   * [データスタック](data_stack.md)
+  * [ワードを定義する](define_words.md)
   * [辞書・解釈意味論]()
   * [算術操作](arithmetic_operations.md)
   * [ワードの定義・実行/走行時意味論]()
