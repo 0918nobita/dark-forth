@@ -2,10 +2,10 @@
   "name": "forth-book",
   "version": "1.0.0",
   "scripts": {
-    "serve": "gitbook build ./forth-book && gitbook --port 8080 serve ./forth-book",
-    "pdf": "gitbook pdf ./forth-book ./forth-book.pdf",
-    "epub": "gitbook epub ./forth-book ./forth-book.epub",
-    "build": "gitbook build ./forth-book && rm -rf docs && cp -r ./forth-book/_book docs"
+    "serve": "gitbook build ./dark-forth && gitbook --port 8080 serve ./dark-forth",
+    "pdf": "gitbook pdf ./dark-forth ./dark-forth.pdf",
+    "epub": "gitbook epub ./dark-forth ./dark-forth.epub",
+    "build": "gitbook build ./dark-forth && rm -rf docs && cp -r ./dark-forth/_book docs"
   },
   "main": "index.js",
   "license": "MIT",
