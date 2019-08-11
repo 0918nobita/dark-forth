@@ -1,9 +1,7 @@
 # DARK FORTH
 
-[![Build Status](https://travis-ci.org/0918nobita/dark-forth.svg?branch=master)](https://travis-ci.org/0918nobita/dark-forth)
-
 - FORTH 言語の入門書
-- GitHub Pages で内容を無料公開
+- PDF で内容を無料公開
 - A5 サイズ無線綴じ製本冊子にして、技術書典7で頒布したい
 
 ## 内容
@@ -22,26 +20,22 @@
 
 ## 環境構築
 
-yarn を事前にインストールしてください。
+SATySFi を事前にインストールしてください。
 
-```bash
-yarn install
+### フォントの追加
+
+1. [こちら](https://www.dafont.com/optimusprinceps.font) からフォントをダウンロード
+
+2. `OptimusPrincepsSemiBold.ttf` を `/usr/local/share/satysfi/fonts` ディレクトリ内にコピー
+
+3. `/usr/local/share/satysfi/hash/fonts.satysfi-hash` に以下の項目を追加:
+
+```
+"optimus": <Single: {"src": "dist/fonts/OptimusPrincepsSemiBold.ttf"}>
 ```
 
-### Web 版のサーバ起動
+### ビルド
 
-```bash
-yarn serve
 ```
-
-### PDF 版の出力
-
-```bash
-yarn pdf
-```
-
-## EPUB 版の出力
-
-```bash
-yarn epub
+satysfi dark-forth.saty
 ```
