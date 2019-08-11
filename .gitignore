@@ -2,5 +2,6 @@ node_modules
 _book
 *.pdf
 *.epub
+*.satysfi-aux
 deploy_key
 deploy_key.pub
