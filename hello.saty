@@ -1,0 +1,18 @@
+@require: stdjareport
+
+let-inline \show-doubled n =
+  n
+  |> ((*) 2)
+  |> arabic
+  |> embed-string
+in
+document (|
+  title = {サンプル文書};
+  author = {\@0918nobita};
+|) '<
+  +chapter{章}<
+    +p{
+      Answer: \show-doubled(21);
+    }
+  >
+>
