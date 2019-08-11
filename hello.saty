@@ -1,18 +1,22 @@
-@require: stdjareport
+@require: stdjabook
+@require: code
 
-let-inline \show-doubled n =
-  n
-  |> ((*) 2)
-  |> arabic
-  |> embed-string
+let-inline ctx \gothic it =
+  let new-ctx = ctx |> set-font Latin (`ipaexg`, 1., 0.) in
+  read-inline new-ctx it
 in
 document (|
-  title = {サンプル文書};
-  author = {\@0918nobita};
+  title = {DARK FORTH};
+  show-title = true;
+  show-toc = true;
+  author = {\gothic{Kodai (Revival of FORTH)}};
 |) '<
-  +chapter{章}<
+  +section{はじめに}<
     +p{
-      Answer: \show-doubled(21);
+      本書をお手にとっていただき，ありがとうございます．
     }
+    +code(```
+    ." HELLO WORLD"
+    ```);
   >
 >
