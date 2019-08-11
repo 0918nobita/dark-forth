@@ -1,3 +1,22 @@
+% ブロックテキスト { ... }
+
+% インラインテキスト < ... > (文書全体を囲むものは例外的に '< ... > )
+
+% read-inline : context -> inline-text -> inline-boxes
+% read-inline ctx it で，テキスト処理文脈 ctx の保持するフォントや
+% 文字サイズなどの情報をもとにインラインテキスト it をインラインボックス列へと変換する
+
+% script-guard : script -> inline-boxes -> inline-boxes
+% スペーシングに関して，インラインボックスを特定の文字体系のテキストに擬態させる
+
+% (++) : inline-boxes -> inline-boxes -> inline-boxes
+% インラインボックス同士を結合させる
+
+% set-dominant-narrow-script : script -> context -> context
+% 第1引数に与えられた文字体系を狭い寡占的な文字体系に設定する
+
+% type script = HanIdeographic | Kana | Latin | OtherScript
+
 % type page = A0Paper | ... | A5Paper | USLetter | USLegal | UserDefinedPaper of length * length
 
 % page-break :
@@ -12,18 +31,30 @@
 %   -> block-boxes
 %   -> document
 
+% block-boxes とは？
+
+% embed-math とは？
+
+% command とは？
+
+% get-initial-cotext とは？
+
+@require: itemize
+@require: code
+
 let-inline ctx \math m =
   script-guard Latin (embed-math ctx m)
 
 let document bt =
   let ctx =
       get-initial-context 440pt (command \math)
-      |> set-dominant-narrow-script Latin
+      |> set-dominant-wide-script Latin
+      |> set-font Kana (`ipaexm`, 1., 0.)
   in
   page-break
     A5Paper
     (fun _ ->
-      (| text-origin = (80pt, 100pt)
+      (| text-origin = (18mm, 20mm)
       ; text-height = 630pt
       |))
     (fun _ ->
@@ -41,4 +72,7 @@ let-inline ctx \optimus it =
 let-block ctx +p it =
   line-break true true ctx (read-inline ctx it ++ inline-fil)
 in
-document '< +p{\optimus{DARK FORTH}} >
+document '<
+  +p{\optimus{DARK FORTH}}
+  +p{\code(`." HELLO WORLD"`); と入力して Enter キーを押してください．}
+>
