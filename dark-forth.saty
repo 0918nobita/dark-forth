@@ -1,12 +1,16 @@
 @require: stdjabook
 @require: code
 
+let-inline ctx \optimus it =
+  let new-ctx = ctx |> set-font Latin (`optimus`, 1., 0.) in
+  read-inline new-ctx it
+
 let-inline ctx \gothic it =
   let new-ctx = ctx |> set-font Latin (`ipaexg`, 1., 0.) in
   read-inline new-ctx it
 in
 document (|
-  title = {DARK FORTH};
+  title = {\optimus{DARK FORTH}};
   show-title = true;
   show-toc = true;
   author = {\gothic{Kodai (Revival of FORTH)}};
