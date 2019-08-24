@@ -1,9 +1,9 @@
 PREDEF:
+  - A-preface.re
 
 CHAPS:
-  - forthbook.re
+  - B-env-setup.re
 
 APPENDIX:
 
 POSTDEF:
-
