@@ -3,7 +3,7 @@ PREDEF:
 
 CHAPS:
   - B-env-setup.re
-  - C-stack-arith.re
+  - C-intro.re
 
 APPENDIX:
 
