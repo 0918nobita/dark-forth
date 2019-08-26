@@ -2,7 +2,7 @@
 
 - FORTH 言語の入門書
 - PDF で内容を無料公開
-- A5 サイズ無線綴じ製本冊子にして、技術書典7で頒布したい
+- A5 サイズ平綴じ冊子にして技術書典7で頒布予定
 
 ## 内容
 
@@ -13,29 +13,19 @@
 - Compilation Words を用いたマクロの作成
 - データ構造とその実装
 
-(できたらいいかも)
+# 目次
 
-- Forth とデザインパターン
-- Forth リアクティブプログラミング
-
-## 環境構築
-
-SATySFi を事前にインストールしてください。
-
-### フォントの追加
-
-1. [こちら](https://www.dafont.com/optimusprinceps.font) からフォントをダウンロード
-
-2. `OptimusPrincepsSemiBold.ttf` を `/usr/local/share/satysfi/fonts` ディレクトリ内にコピー
-
-3. `/usr/local/share/satysfi/hash/fonts.satysfi-hash` に以下の項目を追加:
-
-```
-"optimus": <Single: {"src": "dist/fonts/OptimusPrincepsSemiBold.ttf"}>
-```
-
-### ビルド
-
-```
-satysfi dark-forth.saty
-```
+- まえがき
+- はじめに
+  - 推奨する読み方
+  - 本文中での記法
+  - 準備
+  - FORTH の歴史
+  - 役立つリファレンス
+- スタック操作と算術演算
+  - ワードとインタプリタ
+  - スタックと逆ポーランド記法
+  - 練習問題
+- データスタック
+- リターンスタック
+- 変数 / 配列

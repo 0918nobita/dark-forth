@@ -1,6 +1,7 @@
 node_modules
 _book
 *.pdf
+!forthbook/book.pdf
 *.epub
 *.satysfi-aux
 deploy_key

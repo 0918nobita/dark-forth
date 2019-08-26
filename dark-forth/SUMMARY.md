@@ -1,10 +1,8 @@
 # 目次
 
-* [環境構築](env_setup.md)
-* [基本仕様の理解]()
+* 基本仕様の理解
   * [シンタックス](syntax.md)
   * [HELLO, FORTH!](hello_forth.md)
-  * [処理系をクラッシュさせる](crash_course.md)
   * [データスタック](data_stack.md)
   * [ワードを定義する](define_words.md)
   * [算術操作](arithmetic_operations.md)
