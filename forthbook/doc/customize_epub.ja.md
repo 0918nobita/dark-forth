@@ -60,6 +60,6 @@ epubmaker:
   toc: true
 ```
 
-CSS によっては、Kindle では表現できないことについての警告が表示されることがあります。「Amazon Kindle パブリッシング・ガイドライン」では、使用可能な文字・外部ハイパーリンクの制約・色の使い方・画像サイズなどが詳細に説明されています。
+CSS によっては、Kindle では表現できないことについての警告が表示されることもあります。「Amazon Kindle パブリッシング・ガイドライン」では、使用可能な文字・外部ハイパーリンクの制約・色の使い方・画像サイズなどが詳細に説明されています。
 
 - http://kindlegen.s3.amazonaws.com/AmazonKindlePublishingGuidelines_JP.pdf

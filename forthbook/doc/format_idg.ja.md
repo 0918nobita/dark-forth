@@ -25,7 +25,7 @@ Re:VIEW フォーマットから、Adobe 社の DTP ソフトウェア「InDesig
 
 `//label[〜]` でラベルを定義し、`@<labelref>{〜}` で参照します。XML としては `<label id='〜' />` と `<labelref idref='〜' />` というタグに置き換えられます。
 
-実際にどのような相互参照関係にするかは、処理プログラムに依存します。想定の用途では、章や節の番号およびタイトルを記憶し、labelref の出現箇所に `「節（あるいは章）番号　タイトル」` という文字列を配置します。
+実際に、どのような相互参照関係にするかは、処理プログラムに依存します。想定の用途では、章や節の番号およびタイトルを記憶し、labelref の出現箇所に `「節（あるいは章）番号　タイトル」` という文字列を配置します。
 
 ## 丸数字
 
@@ -56,10 +56,10 @@ Re:VIEW フォーマットから、Adobe 社の DTP ソフトウェア「InDesig
 * sectionsymbol : セクション記号
 * trademarksymbol : 商標記号
 * rightindenttab : 右インデントタブ
-* indentheretab : 「ここまでインデント」タブ
+* indentheretab :「ここまでインデント」タブ
 * zerowidthnonjoiner : 結合なし
-* emdash : EMダッシュ
-* endash : ENダッシュ
+* emdash : EM ダッシュ
+* endash : EN ダッシュ
 * discretionaryhyphen : 任意ハイフン
 * nonbreakinghyphen : 分散禁止ハイフン
 * endnestedstyle : 先頭文字スタイルの終了文字
@@ -67,10 +67,10 @@ Re:VIEW フォーマットから、Adobe 社の DTP ソフトウェア「InDesig
 * doublerightquote : 右二重引用符
 * singleleftquote : 左用符
 * singlerightquote : 右引用符
-* singlestraightquote : 半角一重左用符
-* doublestraightquote : 半角二重引用符
-* emspace : EMスペース
-* enspace : ENスペース
+* singlestraightquote : 半角　一重左用符
+* doublestraightquote : 半角　二重引用符
+* emspace : EM スペース
+* enspace : EN スペース
 * flushspace : フラッシュスペース
 * hairspace : 極細スペース
 * nonbreakingspace : 分散禁止スペース
@@ -79,9 +79,9 @@ Re:VIEW フォーマットから、Adobe 社の DTP ソフトウェア「InDesig
 * thinspace : 細いスペース
 * figurespace : 数字の間隔
 * punctuationspace : 句読点等の間隔
-* sixthspace : 1/6スペース
-* quarterspace : 1/4スペース
-* thirdspace : 1/3スペース
+* sixthspace : 1/6 スペース
+* quarterspace : 1/4 スペース
+* thirdspace : 1/3 スペース
 * columnbreak : 改段
 * framebreak : 改フレーム
 * pagebreak : 改ページ
@@ -91,7 +91,7 @@ Re:VIEW フォーマットから、Adobe 社の DTP ソフトウェア「InDesig
 
 ## 表セル幅の指定
 
-`//tsize[|idgxml|1列目の幅,2列目の幅,...]` で、続く `//table` の表の列幅を指定します（単位mm）。これを利用するときには、`review compile --target=idgxml` を実行する際、オプション`--table=表幅` を付ける必要があります（表幅の単位は mm）。列幅指定の個数が実際の列数に満たない場合、残りの列は均等分割したものとなります。列幅の合計が表幅を超えると警告が表示されます。
+`//tsize[|idgxml|1列目の幅,2列目の幅,...]` で、続く `//table` の表の列幅を指定します（単位 mm）。これを利用するときには、`review compile --target=idgxml` を実行する際、オプション`--table=表幅` を付ける必要があります（表幅の単位は mm）。列幅指定の個数が実際の列数に満たない場合、残りの列は均等分割したものとなります。列幅の合計が表幅を超えると警告が表示されます。
 
 ## 表セルの結合やスタイル指定
 `@<dtp>{table 表オプション}` を各セルに入れることで、そのセルの挙動を制御します。

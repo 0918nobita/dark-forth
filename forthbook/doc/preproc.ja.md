@@ -1,6 +1,6 @@
 # review-preproc ユーザガイド
 
-Re:VIEWではソースコードなどを本文中に埋め込むことができます。
+Re:VIEW ではソースコードなどを本文中に埋め込むことができます。
 
 ## `#@mapfile`
 
@@ -25,7 +25,7 @@ end
 ```
 「`#@mapfile(ファイル名)`」から「`#@end`」は、指定したファイル名のファイル全体を本文中に埋め込むための記法です。埋め込む際には、`review-preproc`コマンドを実行します。
 
-まず、以下のように、引用したい部分に「`#@mapfile()`」と「`#@end`」だけを書きます。ここでは`//list`ブロック内にこの2行だけを記述しています。
+まず、以下のように、引用したい部分に「`#@mapfile()`」と「`#@end`」だけを書きます。ここでは`//list`ブロック内にこの 2 行だけを記述しています。
 
 ```review
 //list[hello.rb.1][hello.re]{
@@ -33,7 +33,7 @@ end
 #@end
 //}
 ```
-このソースに対して、`review-preproc`コマンドを実行します。すると、変換結果の*.reファイルを標準出力に出力します。
+このソースに対して、`review-preproc`コマンドを実行します。すると、変換結果の*.re ファイルを標準出力に出力します。
 
 ```shell-session
 $ review-preproc hello.re
@@ -44,7 +44,7 @@ $ review-preproc hello.re
 $ review-preproc --replace hello.re
 ```
 
-なお、rakeを使ってビルドしている場合、Rakefileに以下のような記述を追加すると、このコマンドを実行するtaskが定義されます。
+なお、rake を使ってビルドしている場合、Rakefile に以下のような記述を追加すると、このコマンドを実行する task が定義されます。
 
 ```rake
 desc 'preproc all'
@@ -65,7 +65,7 @@ $ rake preproc
 
 対象ファイルの一部だけ抜粋することもできます。こちらは「`#@maprange`」という記法を使います。
 
-対象ファイルの抜粋したい部分の前後に、「`#@range_begin(ID)`」と「`#@range_end`」という記法を埋め込んでおきます。`#@range_begin`の引数には、その断片を抽出する際に使用するIDを指定します。以下の例では「sample」というIDにしています。
+対象ファイルの抜粋したい部分の前後に、「`#@range_begin(ID)`」と「`#@range_end`」という記法を埋め込んでおきます。`#@range_begin`の引数には、その断片を抽出する際に使用する ID を指定します。以下の例では「sample」という ID にしています。
 
 ```ruby
 #!/usr/bin/env ruby
@@ -82,7 +82,7 @@ if __FILE__ == $0
   Hello.new.hello("world")
 end
 ```
-*.reファイルのほうには、「`#@mapfile(ファイル名)`」ではなく「`#@maprange(ファイル名,ID)`」を記述します。
+*.re ファイルのほうには、「`#@mapfile(ファイル名)`」ではなく「`#@maprange(ファイル名,ID)`」を記述します。
 
 ```review
 //list[range.rb][range.rb(抜粋)]{
@@ -105,9 +105,9 @@ end
 
 ## `#@@maprange`
 
-もっとも、Ruby以外では「`#@range_begin`」などがコメントと解釈されないこともあります。そのような場合、その言語のコメントの中に「`#@@range_begin`」と「`#@@range_end`」とを記述します。
+もっとも、Ruby 以外では「`#@range_begin`」などがコメントと解釈されないこともあります。そのような場合、その言語のコメントの中に「`#@@range_begin`」と「`#@@range_end`」とを記述します。
 
-Cのソースを例にします。対象となるrange.cは以下です。
+C のソースを例にします。対象となる range.c は以下です。
 
 ```c
 #include <stdio.h>
@@ -126,9 +126,9 @@ int main()
 }
 ```
 
-put_hello関数の定義の前後で「`#@@range_begin`」と「`#@@range_end`」が使われています。
+put_hello 関数の定義の前後で「`#@@range_begin`」と「`#@@range_end`」が使われています。
 
-これに対し、*.reファイルでは`#@maprange(scripts/range.c,sample)`と`#@end`を記述します。
+これに対し、*.re ファイルでは`#@maprange(scripts/range.c,sample)`と`#@end`を記述します。
 
 ```
 //list[range.c][range.c(抜粋)]{
@@ -150,4 +150,4 @@ put_hello(char *name)
 #@end
 //}
 ```
-このようにすると、Cなどの言語のファイルに対しても、ソースの一部を抽出して埋め込むことができます。
+このようにすると、C などの言語のファイルに対しても、ソースの一部を抽出して埋め込むことができます。
