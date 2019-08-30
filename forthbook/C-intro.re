@@ -124,7 +124,9 @@ FORTH にはスタックの内容を操作するための組み込みワード�
 == セル
 
 FORTH で扱われるデータのサイズの最小単位は@<b>{セル}である。
-1 セルあたりの実際のサイズは処理系依存だが、標準仕様に含まれている @<hidx>{CELLS}@<code>{CELLS} ワードを用いて、
+スタックに積まれる要素のサイズもすべて 1 ワードとなっている。
+1 セルあたりの実際のサイズは処理系依存だが、
+標準仕様に含まれている @<hidx>{CELLS}@<code>{CELLS} ワードを用いて、
 使用中の処理系でのサイズを知ることができる。
 
 //list[cells][1 セルあたりのバイト数を調べる][forth]{
@@ -146,22 +148,32 @@ Gforth では 1 セル @<m>{=} 8 バイトなので、@<list>{cells}を実行す
 
 @<code>{before}, @<code>{after} の部分には、スペース区切りで@<hidx>{シンボル}@<b>{シンボル}が 0 個以上並ぶ。
 シンボルは、FORTH におけるデータ型や、その値のサイズを表現するための記号である。
-Forth 2012 Standard において用いられているシンボルについて、以下にまとめておく。
+Forth 2012 Standard において用いられているシンボルについて、@<table>{symbols}にまとめておく。
 現段階では扱っていない言語機能に関するシンボルも含まれているが、今後参照する資料として一旦読み流しておいてほしい。
 
 //table[symbols][スタック表記法で用いられるシンボル]{
 シンボル	データ型	サイズ
 -------------------------------
-@<code>{flag}	フラグ	1 セル
-@<code>{true}	true フラグ	1 セル
-@<code>{false}	false フラグ	1 セル
-@<code>{n}	符号付き整数	1 セル
-@<code>{u}	符号無し整数	1 セル
-@<code>{x}	指定のない 1 セル分のデータ	1 セル
-@<code>{xt}	XT	1 セル
-@<code>{addr}	アドレス	1 セル
-@<code>{a-addr}	アラインメントされた領域のアドレス	1 セル
-@<code>{c-addr}	文字にあわせてアライメントされた領域のアドレス	1 セル
+@<hidx>{flag}@<code>{flag}	フラグ	1 セル
+@<hidx>{char}@<code>{char}	文字	1 セル
+@<hidx>{n}@<code>{n}	符号付き整数	1 セル
+@<hidx>{u}@<code>{u}	符号無し整数	1 セル
+@<hidx>{x}@<code>{x}	指定のない 1 セル分のデータ	1 セル
+@<hidx>{xt}@<code>{xt}	エグゼキューショントークン	1 セル
+@<hidx>{addr}@<code>{addr}	アドレス	1 セル
+@<hidx>{a-addr}@<code>{a-addr}	アラインメントされた領域のアドレス	1 セル
+@<hidx>{c-addr}@<code>{c-addr}	文字用にアライメントされた領域のアドレス	1 セル
+@<hidx>{d}@<code>{d}	2 セル符号付き整数	2 セル
+@<hidx>{ud}@<code>{ud}	2 セル符号無し整数	2 セル
+@<hidx>{colon-sys}@<code>{colon-sys}	定義コンパイル	処理系依存
+@<hidx>{do-sys}@<code>{do-sys}	DO-LOOP 構造	処理系依存
+@<hidx>{case-sys}@<code>{case-sys}	CASE 構造	処理系依存
+@<hidx>{of-sys}@<code>{of-sys}	OF 構造	処理系依存
+@<hidx>{orig}@<code>{orig}	コントロールフロー原点	処理系依存
+@<hidx>{dest}@<code>{dest}	コントロールフロー方向	処理系依存
+@<hidx>{loop-sys}@<code>{loop-sys}	ループコントロール引数	処理系依存
+@<hidx>{nest-sys}@<code>{nest-sys}	定義セル	処理系依存
+@<code>{i * x, j * x, k * x}	任意	0 セル以上
 //}
 
 == ワード定義の基本
