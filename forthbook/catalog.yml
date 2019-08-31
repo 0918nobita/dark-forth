@@ -3,8 +3,16 @@ PREDEF:
 
 CHAPS:
   - B-env-setup.re
-  - C-intro.re
+  - C-forthjp.re
+  - D-intro.re
+  - E-data.re
+  - F-arith.re
+  - G-string.re
+  - H-control.re
+  - I-compiler.re
+  - J-error.re
 
 APPENDIX:
 
 POSTDEF:
+  - K-afterword.re
