@@ -12,30 +12,72 @@ FORTH における用語はできる限り説明した上で導入するよう�
 2 章からはそれぞれ練習問題を設けている。本文中の内容を確認するために、
 実際に頭と手を動かすことを推奨する。
 
-== 本文中での記法
+本書での具体的な目的は「FORTH の特徴的な言語機能とその活用方法を理解して、
+これから Forth Standard を参照しながら探求していく土台をつくること」である。
+この目的のために、あえて FORTH の算術・文字列操作などの雑多な API には深入りせず、
+よりコアな言語機能の説明を優先している。その関係上、はじめは辞書的な読み方ではなく
+連続したチュートリアルとして、先頭の章から順番に読み進めることを推奨する。
 
-//list[fs][]{
-." HELLO WORLD"
-//}
+== Gforth のインストール作業
 
-== 準備
+本書では、FORTH 処理系のひとつである GNU forth (以降、Gforth) を使用する。
+著者が使用している Gforth のバージョンは @<code>{0.7.9} である。
+@<href>{http://gforth.org} (@<img>{gforth-org}) で
+インストール方法に関する情報やチュートリアル(英語)が提供されている。
 
-GNU forth を使用する。
+//image[gforth-org][Gforth 公式サイト]
 
 === Windows
 
-http://gforth.org からインストーラを入手する。
+@<href>{http://www.complang.tuwien.ac.at/forth/gforth/} から、
+「Win32 self installing」と記載されたインストーラを入手し、
+それを実行して指示に従ってインストールする。
 
 === macOS
 
+Homebrew 経由で導入できる。
+
 //cmd{
-$ brew install gforth
+brew install gforth
 //}
 
-== FORTH の歴史
+=== Ubuntu
 
-チャールズ・ムーアによって開発された。
+@<code>{apt} コマンドでインストールできる。
+
+//cmd{
+sudo apt install gforth
+//}
+
+=== Arch linux
+
+AUR @<fn>{aur}で提供されているので、@<code>{yay} 等を利用してインストールする。
+
+//cmd{
+yay -S gforth
+//}
+
+//footnote[aur][パッケージ詳細ページ: https://aur.archlinux.org/packages/gforth/]
+
+== FORTH の歴史と標準
+
+FORTH は、1958年からチャールズ・ムーアが個人開発していたプログラミングシステムから考案された。
+1968年に、このソフトウェアをミニコンピュータ上で FORTRAN で実装したものが FORTH の原型とされている。
+FORTH が他のプログラマに最初に公開されたのは1970年代で、アメリカ国立天文台 (NARO) にいたエリザベス・ラザーによって始められたものである。
+NARO にいた 2 人は制御用ソフト開発において FORTH を完成させ、後に FORTH, Inc. を設立した(1973年)。
+ムーアの仕事の関係上、言語開発の初期段階では移植性の高さが求められていた。当時の FORTH は現在のスクリプト言語のような立ち位置ではなく、
+FORTH 処理系自体が軽量 OS として用いられていた。そういった処理系のひとつである MacFORTH は、アップル Macintosh の最初の常駐開発システムとして採用されていた。
+
+その後も FORTH は様々な環境に移植され、1979年に言語仕様の標準化が始まった。1979 年に成分化された FORTH-79、1983年に成分化された FORTH-83 は「事実上の標準@<fn>{standard}」である。
+これらの標準は 1994 年に ANSI によって統合され、ANS Forth と名付けられた。1979 年には ISO/IEC においても標準化されている@<fn>{iso}。
+
+本書で扱う Gforth は Forth 2012 Standard という規格に沿って現在も盛んに開発されており、
+Forth 2012 Standard は Forth 200x 標準化委員会によって策定されている。
+
+//footnote[standard][デファクトスタンダードとも呼ばれる。標準化機関等が定めた規格ではなく、市場における競争や広く採用された結果として「事実上標準化した基準」を指している。]
+//footnote[iso][ISO/IEC 15145:1997 https://www.iso.org/standard/26479.html]
 
 == 役立つリファレンス
 
-また、FORTH ではなく iMops という派生言語について書かれているこのサイトも役に立つ。
+ : Forth Standard
+    @<href>{https://forth-standard.org/}@<br>{}Forth 2012 Standard に関する情報が共有され、さらなる技術仕様 (プロポーザル) がまとめられている。
