@@ -79,5 +79,9 @@ Forth 2012 Standard は Forth 200x 標準化委員会によって策定されて
 
 == 役立つリファレンス
 
+ : Gforth Manual
+    @<href>{http://gforth.org/manual/}@<br>{}FORTH と Gforth の仕様を学べるマニュアル
  : Forth Standard
     @<href>{https://forth-standard.org/}@<br>{}Forth 2012 Standard に関する情報が共有され、さらなる技術仕様 (プロポーザル) がまとめられている。
+ : Starting FORTH
+    @<href>{https://forth.com/starting-forth}@<br>{}FORTH 入門者向けに、基本からコンパイラ変形まで網羅的に解説している本
