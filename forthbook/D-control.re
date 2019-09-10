@@ -49,6 +49,21 @@ FORTH では、通常「条件分岐」や「繰り返し」はコンパイル�
 @<code>{1}, @<code>{2}, @<code>{3} の場合に、それぞれ異なる文字列を出力する。
 それ以外の値の場合には、@<code>{Other number:[数値]} の形式で出力する。
 
+//list[branch3][CASE による多方向への分岐][forth]{
+  : word3-3  ( n1 n2 -- n3 )
+    CASE
+      1 OF ." It is one." ENDOF
+      2 OF ." It is two." ENDOF
+      3 OF ." It is three." ENDOF
+      ." Other number: " DUP .
+    ENDCASE
+  ;
+  1 word3-3
+  2 word3-3
+  3 word3-3
+  4 word3-3
+//}
+
 @<code>{CASE} ワードまでにスタックの一番上に積まれた値 (以下、「入力値」) が、@<code>{OF} ワードの前に積んだ値 (以下、「基準値」) と一致した場合には、
 その後の @<code>{ENDOF} ワードまでを実行して @<code>{ENDCASE} ワードまでジャンプする。
 @<code>{OF}, @<code>{ENDOF} ワードを用いないことで、それまで挙げたどの基準値にも一致しなかった場合の処理を記述できる。
@@ -56,30 +71,12 @@ FORTH では、通常「条件分岐」や「繰り返し」はコンパイル�
 @<code>{OF} ワードの走行時意味論は「直前に積まれた入力値と基準値のうち、基準値だけをポップすること」であり、
 @<code>{ENDCASE} ワードの走行時意味論は「入力値をポップして実行を続けること」である。
 そのため、スタック上の入力値を消費する操作をする場合には入力値を複製しておくことが必要となる。
-@<list>{branch3} でも、@<code>{Other number:} を出力した後に入力値を出力するために、
+@<code>{word3-3} ワードでも、@<code>{Other number:} を出力した後に入力値を出力するために、
 予め @<code>{DUP} ワードを呼び出している。
-
-//list[branch3][CASE による多方向への分岐][forth]{
-: word3-3  ( n1 n2 -- n3 )
-  CASE
-    1 OF ." It is one." ENDOF
-    2 OF ." It is two." ENDOF
-    3 OF ." It is three." ENDOF
-    ." Other number: " DUP .
-  ENDCASE
-;
-1 word3-3
-2 word3-3
-3 word3-3
-4 word3-3
-//}
-
-「ワードの呼び出しを終了する」という走行時意味論を持った @<code>{EXIT} ワードを用いると、
-どこからでも定義内容の最後まで跳躍することができる。
 
 == 繰り返し
 
-=== 確定ループ
+=== 確定ループと脱出
 
 回数を指定してループを発生させる場合は、@<code>{DO}, @<code>{LOOP} ワードを用いる。
 @<code>{DO ( n1 n2 -- )} ワードの走行時意味論としては、スタックから 2 数を取り出し、
@@ -91,17 +88,24 @@ DO LOOP
 
 @<code>{LOOP} ワードの代わりに @<code>{+LOOP} ワードを用いると、
 ループカウンタのステップ数を動的に設定することができる。
+@<code>{+LOOP} ワードが呼び出される前に、ステップ数として扱われる数値をスタックに積んでおけばいい。
 
 //list[loop-step][][forth]{
 DO +LOOP
 //}
 
+「ワードの呼び出しを終了する」という走行時意味論を持った @<code>{EXIT} ワードを用いると、
+どこからでも定義内容の最後までジャンプすることができる。
+
 === 不定ループ
 
-条件に応じてループ発生させる場合は、
+条件に応じてループ発生させる場合は、いくつかの用法が存在している。
 
-//list[indefinite-loop][][forth]{
-//}
+==== BEGIN UNTIL 用法
+
+==== BEGIN WHILE REPEAT 用法
+
+==== BEGIN AGAIN 用法
 
 //list[loop][][forth]{
 I J
