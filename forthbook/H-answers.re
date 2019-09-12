@@ -38,9 +38,9 @@
 
 === 第 3 章
 
-==== 問題 1
+==== 問題 2
 
-//emlist[解答例]{
+//emlist[]{
 : fib  ( n1 -- n2 )
   CASE
     0 OF 0 ENDOF
@@ -48,4 +48,10 @@
     0 1 ROT 0 DO 2DUP + ROT DROP LOOP
   ENDCASE
 ;
+//}
+
+==== 問題 3
+
+//emlist[]{
+: OVER  >R DUP R> SWAP ;
 //}
