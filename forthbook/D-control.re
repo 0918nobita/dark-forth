@@ -202,14 +202,63 @@ positive number: 1
 positive number: 2
 //}
 
-@<code>{EXIT} ワードの注意点として、「ループからの脱出のために使用してはいけない」ということが挙げられる。
-後述する「リターンスタック」の管理上の問題である。代わりに @<code>{UNLOOP} ワードが用意されている。
+@<code>{EXIT} ワードの注意点として、「@<code>{DO}, @<code>{?DO}, @<code>{LOOP} ワードによる
+ループからの脱出のために @<code>{EXIT} ワード単体で使用してはいけない」ということが挙げられる。
+その理由については3.4節「リターンスタック」で述べる。
+代替策として @<code>{UNLOOP} ワードが用意されており、@<code>{EXIT} ワードを
+呼び出す直前に呼び出すことでループから正常に脱出できる。
+ループがネストしている場合は、その個数分だけ @<code>{UNLOOP} ワードを呼び出す必要がある。
+
+//list[unloop][UNLOOP ワードの使用例][forth]{
+: less-than-4  ( n -- )
+  CR 1 + 1
+  DO
+    I DUP ." Checked: " . CR 4 =
+    IF
+      ." Equal to or greater than 4" CR UNLOOP EXIT
+    THEN
+  LOOP
+  ." Less than 4" CR
+;
+
+2 less-than-4
+10 less-than-4
+//}
+
+//emlist[実行結果]{
+Checked: 1
+Checked: 2
+Less than 4
+
+Checked: 1
+Checked: 2
+Checked: 3
+Checked: 4
+Equal to or greater than 4
+//}
+
+@<list>{unloop} で定義している @<code>{less-than-4} ワードでは、
+スタックから取り出した数に応じて @<code>{DO} ループを発生させ、
+ループカウンタが 4 まで増加するとその時点で @<code>{UNLOOP EXIT} によってループを脱出する。
 
 == 再帰
 
-//list[rec][][forth]{
-RECURSE
+@<code>{RECURSE} ワードを用いると、呼び出されている最中に自らの呼び出しを行うようなワードを定義できる。
+@<list>{fact-rec} では、@<code>{RECURSE} ワードを用いて先述した階乗関数を再定義している。
+当然 @<code>{RECURSE} ワードは @<code>{:} によるワード定義の最中にしか使うことができない。
+
+//list[fact-rec][RECURSE ワードを用いて階乗関数を定義する][forth]{
+: fact  ( n1 -- n2 )
+  DUP 0 <=
+  IF
+    DROP 1
+  ELSE
+    DUP 1 - RECURSE *
+  THEN
+;
 //}
+
+
 
 == リターンスタック
 
@@ -230,3 +279,5 @@ RECURSE
     解釈時: 未定義動作@<br>{}実行時: @<code>{( -- x ) ( R: x -- x )}@<br>{}リターンスタックの一番上の要素をコピーして、データスタックにプッシュする。
 
 == 練習問題
+
+ 1. フィボナッチ数を求めるワード @<code>{fib ( n1 -- n2 )} を定義せよ。

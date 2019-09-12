@@ -91,6 +91,8 @@ CR .S 6 3 4 CR .S + CR .S * CR .S
     「剰余」「商」を順にプッシュする
  : @<idx>{NEGATE}
     符号を反転する
+ : @<idx>{ABS}
+    絶対値
 
 //list[basic-arith][]{
 23 8 - 3 / .

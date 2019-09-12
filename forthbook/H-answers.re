@@ -35,3 +35,17 @@
 //emlist[]{
 : word2-5  ( x1 x2 -- x2 )  SWAP DROP ;
 //}
+
+=== 第 3 章
+
+==== 問題 1
+
+//emlist[解答例]{
+: fib  ( n1 -- n2 )
+  CASE
+    0 OF 0 ENDOF
+    1 OF 1 ENDOF
+    0 1 ROT 0 DO 2DUP + ROT DROP LOOP
+  ENDCASE
+;
+//}
