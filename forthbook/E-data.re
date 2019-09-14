@@ -70,6 +70,10 @@ ALLIGN ALLIGNED
 
 == 匿名ワードと XT
 
+定義済みのワードを、データとして扱い、識別するためのフォーマットが XT (eXecution Token) だ。
+@<code>{'} (ティック) ワードを用いて既定義ワードの XT を取得でき、
+@<code>{EXECUTE} ワードを用いて、指定した XT に対応するワード呼び出しを発生させることができる。
+
 //list[anonymous][][forth]{
 :NONAME
 DEFER
