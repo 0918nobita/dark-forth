@@ -87,9 +87,9 @@ HELLO!
 
 @<code>{'} ワードの実行時意味論は
 「後続するソースコードから１単語をパースして、その名前がついたワードの XT をプッシュすること」であるから、
-@<list>{2times} のような高等的なワードを定義することが可能である。
+@<list>{ntimes} のような高等的なワードを定義することが可能である。
 
-//list[2times][間接的な呼び出しを複数回発生させる][forth]{
+//list[ntimes][間接的な呼び出しを複数回発生させる][forth]{
 : hello ." HELLO!" ;
 
 : 2times  ( xt -- i * x )
@@ -109,6 +109,22 @@ HELLO!HELLO!
 HELLO!HELLO!HELLO!HELLO!
 //}
 
+@<list>{ntimes} では動作確認のためだけに @<code>{hello} ワードを定義したが、
+実用上「その場で名前のない (というより名付ける必要のない) ワードを定義して XT だけを得る」という操作が必要になることが多い。
+
+こういった要望に応える言語機能として@<hidx>{匿名ワード}@<b>{匿名ワード}という機能が用意されている。
+その名の通り「名前のない」ワードを生成できる機能だ。
+実際に匿名ワードを生成するには @<code>{:NONAME} ワードを用いる。@<code>{:NONAME} の後ろに、@<code>{:} と
+同じようにワード定義の本体を記述して @<code>{;} で定義を終了する。すると @<code>{:NONAME} は XT をプッシュするので、
+それをどこかに保持しておけば、いつでも @<code>{EXECUTE} できる。
+
+@<code>{:NONAME} ワードを用いると、@<code>{ntimes} の最後の２行は @<list>{noname} のように書き換えられる。
+
+//list[noname][:NONAME ワードの利用][forth]{
+:NONAME ." HELLO!" 2times CR
+:NONAME ." HELLO!" 4 ntimes
+//}
+
 //list[anonymous][][forth]{
 :NONAME
 DEFER
@@ -116,7 +132,6 @@ DEFER
 ACTION-OF
 IS
 //}
-
 
 == DOES>
 
