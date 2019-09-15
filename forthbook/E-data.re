@@ -54,6 +54,8 @@ bar @ .
 270 42
 //}
 
+変数の宣言だけをして、初期化を後回しにするには @<code>{VARIABLE} ワードを用いる。
+
 //list[variable2][][forth]{
 VARIABLE baz
 80 baz !
@@ -149,6 +151,9 @@ It works!
 //}
 
 == DOES>
+
+ここまでは「ワードの名前」と「ワードの定義内容」を分けて管理する術について述べてきたが、
+@<code>{CONSTANT}, @<code>{VALUE}, @<code>{VARIABLE} ワードのような、「ワードを定義するワード」はどのように定義されるのだろうか。
 
 //list[does][][forth]{
 CREATE DOES>
