@@ -110,13 +110,6 @@ array 2 CELLS + @
 メモリ確保は @<code>{ALLOT ( n -- )} ワードが担当する。
 @<code>{ALLOT} によって確保される領域の先頭アドレスは @<code>{HERE} ワードでいつでも取得できる。
 
-=== 辞書の探索
-
-//list[dict][][forth]{
-[DEFINED]
-FIND
-//}
-
 == 匿名ワードと XT
 
 === XT と間接的呼び出し
@@ -200,7 +193,8 @@ It works!
 == DOES>
 
 ここまでは「ワードの名前」と「ワードの定義内容」を分けて管理する術について述べてきたが、
-@<code>{CONSTANT}, @<code>{VALUE}, @<code>{VARIABLE} ワードのような、「ワードを定義するワード」たちはどのように定義されるのだろうか。
+@<code>{CONSTANT}, @<code>{VALUE}, @<code>{VARIABLE} ワードのような、
+「ワードを定義するワード」たちはどのように定義されるのだろうか。
 
 実はそういったワードの根底では @<code>{CREATE} ワードが大きな役割を持っている。
 
