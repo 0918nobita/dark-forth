@@ -62,6 +62,8 @@ VARIABLE baz
 baz @ .
 //}
 
+=== 配列の表現
+
 //list[dict][][forth]{
 [DEFINED]
 FIND
@@ -153,7 +155,9 @@ It works!
 == DOES>
 
 ここまでは「ワードの名前」と「ワードの定義内容」を分けて管理する術について述べてきたが、
-@<code>{CONSTANT}, @<code>{VALUE}, @<code>{VARIABLE} ワードのような、「ワードを定義するワード」はどのように定義されるのだろうか。
+@<code>{CONSTANT}, @<code>{VALUE}, @<code>{VARIABLE} ワードのような、「ワードを定義するワード」たちはどのように定義されるのだろうか。
+
+実はそういったワードの根底では @<code>{CREATE} ワードが大きな役割を持っている。
 
 //list[does][][forth]{
 CREATE DOES>
