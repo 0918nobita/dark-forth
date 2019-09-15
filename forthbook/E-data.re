@@ -94,12 +94,17 @@ array 2 CELLS + @
 メモリ確保は @<code>{ALLOT ( n -- )} ワードが担当する。
 今後 @<code>{ALLOT} によって確保される領域の先頭アドレスは @<code>{HERE} ワードで取得できる。
 
+=== 辞書への書き込み
+
+//list[write-dict][][forth]{
+, ALLIGN
+//}
+
+=== 辞書の探索
+
 //list[dict][][forth]{
 [DEFINED]
 FIND
-HERE UNUSED
-, C,
-ALLIGN ALLIGNED
 //}
 
 == 匿名ワードと XT
