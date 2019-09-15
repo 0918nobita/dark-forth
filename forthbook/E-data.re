@@ -64,6 +64,35 @@ baz @ .
 
 === 配列の表現
 
+FORTH において、配列は「メモリ上の連続した値の列の先頭アドレス」として表現される。
+要素数をメモリ上に保持する機構はデフォルトでは備わってない。
+@<list>{array} では要素が３つの配列 @<code>{array} を定義して値を書き込んでいる。
+
+//list[array][配列の生成と要素の取得][forth]{
+CREATE array 3 CELLS ALLOT
+
+1 array !
+2 array 1 CELLS + !
+3 array 2 CELLS + !
+
+array 3 CELLS DUMP
+
+array @
+array 1 CELLS + @
+array 2 CELLS + @
+* * .
+//}
+
+@<code>{CREATE} ワードは、今後データと名前を対にして辞書に登録していく上で、
+名前の登録だけを行う。データを格納するためのメモリ領域の確保は行わない。
+メモリ確保は @<code>{ALLOT ( n -- )} ワードが担当する。
+
+//emlist[実行結果]{
+6FFFF87DDD8: 01 00 00 00  00 00 00 00 - 02 00 00 00  00 00 00 00
+6FFFF87DDE8: 03 00 00 00  00 00 00 00 -
+6
+//}
+
 //list[dict][][forth]{
 [DEFINED]
 FIND
