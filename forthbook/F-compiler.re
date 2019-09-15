@@ -23,5 +23,3 @@ PARSE WORD
 //list[interrupt][][forth]{
 [ ] LITERAL SLITERAL STATE
 //}
-
-== 練習問題
