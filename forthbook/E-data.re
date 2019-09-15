@@ -55,6 +55,7 @@ bar @ .
 //}
 
 変数の宣言だけをして、初期化を後回しにするには @<code>{VARIABLE} ワードを用いる。
+@<code>{VALUE} ワードと異なるのは、先にスタックに初期値を積んでおく必要がない点だ。
 
 //list[variable2][][forth]{
 VARIABLE baz
@@ -95,6 +96,9 @@ array 2 CELLS + @
 今後 @<code>{ALLOT} によって確保される領域の先頭アドレスは @<code>{HERE} ワードで取得できる。
 
 === 辞書への書き込み
+
+@<code>{CREATE} ワードによって定義されるワードは、
+その時点で @<code>{HERE} ワードを呼び出して得られるアドレスを返すようになっている。
 
 //list[write-dict][][forth]{
 , ALLIGN
