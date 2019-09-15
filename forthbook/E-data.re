@@ -70,6 +70,8 @@ ALLIGN ALLIGNED
 
 == 匿名ワードと XT
 
+=== XT と間接的呼び出し
+
 定義済みのワードをデータとして扱い、
 識別するためのフォーマットが @<hidx>{XT}@<b>{XT} (eXecution Token) だ。
 @<code>{'} (ティック) ワードを用いて既定義ワードの XT を取得できる。
@@ -109,6 +111,8 @@ HELLO!HELLO!
 HELLO!HELLO!HELLO!HELLO!
 //}
 
+=== 匿名ワード
+
 @<list>{ntimes} では動作確認のためだけに @<code>{hello} ワードを定義したが、
 実用上「その場で名前のない (というより名付ける必要のない) ワードを定義して XT だけを得る」という操作が必要になることが多い。
 
@@ -125,12 +129,23 @@ HELLO!HELLO!HELLO!HELLO!
 :NONAME ." HELLO!" 4 ntimes
 //}
 
-//list[anonymous][][forth]{
-:NONAME
-DEFER
-'
-ACTION-OF
-IS
+=== 名前の仮取得と XT の割り当て
+
+これでワードの定義内容をデータとして持ち回る方法を得たわけだが、
+定義内容のない名前を辞書に先に登録しておく操作も可能である。
+その操作には @<hidx>{DEFER}@<code>{DEFER} ワードを用いる。
+
+定義内容の定まっていない「辞書に登録された名前」に対して、
+定義内容としての XT を紐付けるには @<hidx>{IS}@<code>{IS} ワードを用いる。
+
+//list[defer-is][名前の仮取得と XT 割り当て][forth]{
+DEFER will-be-defined
+:NONAME ." It works!" IS will-be-defined
+will-be-defined
+//}
+
+//emlist[実行結果]{
+It works!
 //}
 
 == DOES>
