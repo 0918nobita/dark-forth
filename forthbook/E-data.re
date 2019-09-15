@@ -70,9 +70,44 @@ ALLIGN ALLIGNED
 
 == 匿名ワードと XT
 
-定義済みのワードを、データとして扱い、識別するためのフォーマットが XT (eXecution Token) だ。
-@<code>{'} (ティック) ワードを用いて既定義ワードの XT を取得でき、
-@<code>{EXECUTE} ワードを用いて、指定した XT に対応するワード呼び出しを発生させることができる。
+定義済みのワードをデータとして扱い、
+識別するためのフォーマットが @<hidx>{XT}@<b>{XT} (eXecution Token) だ。
+@<code>{'} (ティック) ワードを用いて既定義ワードの XT を取得できる。
+XT をもとに実際に呼び出しを発生させるには @<hidx>{EXECUTE}@<code>{EXECUTE} ワードを用いる。
+
+//list[xt][XT の取得と間接的な呼び出し][forth]{
+: hello  ( -- )  ." HELLO!" ;
+
+' hello EXECUTE
+//}
+
+//emlist[実行結果]{
+HELLO!
+//}
+
+@<code>{'} ワードの実行時意味論は
+「後続するソースコードから１単語をパースして、その名前がついたワードの XT をプッシュすること」であるから、
+@<list>{2times} のような高等的なワードを定義することが可能である。
+
+//list[2times][間接的な呼び出しを複数回発生させる][forth]{
+: hello ." HELLO!" ;
+
+: 2times  ( xt -- i * x )
+  DUP EXECUTE EXECUTE
+;
+
+: ntimes  ( xt n -- i * x )
+  0 ?DO DUP EXECUTE LOOP DROP
+;
+
+' hello 2times CR
+' hello 4 ntimes
+//}
+
+//emlist[実行結果]{
+HELLO!HELLO!
+HELLO!HELLO!HELLO!HELLO!
+//}
 
 //list[anonymous][][forth]{
 :NONAME
