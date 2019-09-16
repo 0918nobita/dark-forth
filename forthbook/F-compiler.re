@@ -58,12 +58,6 @@ evaluated
 PARSE WORD
 //}
 
-== コンパイル中断
-
-//list[interrupt][][forth]{
-[ ] LITERAL SLITERAL STATE
-//}
-
 ===[column] IMMEDIATE ワードの命名法
 
 一般的には、IMMEDIATE ワードには @<code>{[xxx]} のような形式の名前をつける。
