@@ -328,9 +328,3 @@ Forth Standard での @<code>{DO} ワードの解説@<fn>{do-link}にある通�
 残ってしまい、処理系がクラッシュしてしまう。
 
 //footnote[do-link][https://forth-standard.org/standard/core/DO]
-
-== 練習問題
-
- 1. データスタックに積んだ 1 セル整数の回数だけ、FizzBuzz を実行するワードを定義せよ。
- 2. フィボナッチ数を求めるワード @<code>{fib ( n1 -- n2 )} を定義せよ。
- 3. リターンスタック操作のワードを利用して、@<code>{OVER} ワードを実装せよ。

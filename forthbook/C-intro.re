@@ -343,11 +343,3 @@ gforth file1.4th file2.4th
 //list[include][file.4th を読み込む][forth]{
 S" file.4th" INCLUDED
 //}
-
-== 練習問題
-
- 1. @<m>{6 - 7 × 8 + 9} を Gforth 上で計算せよ。
- 2. @<code>{2SWAP} ワードのスタック表記を示せ。
- 3. スタック上の @<m>{x, y} をポップし、@<m>{y × 2 + x} をプッシュするワード @<code>{word2-3} を定義せよ。
- 4. スタック上の @<m>{x, y} をポップし、@<m>{x \mod 3 - y / 4} をプッシュするワード @<code>{word2-4} を定義せよ。
- 5. @<code>{NIP} ワードと同じ挙動のワード @<code>{word2-5} を定義せよ。ただし、定義に「@<code>{NIP} ワードの呼び出し」を含めてはいけない。
