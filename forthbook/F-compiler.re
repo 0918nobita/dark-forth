@@ -1,5 +1,7 @@
 = コンパイラ変形
 
+ここまでの流れとしては
+
 == IMMEDIATE / POSTPONE
 
 //list[ip][][forth]{
