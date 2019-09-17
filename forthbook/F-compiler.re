@@ -73,8 +73,7 @@ Compilation state
 
 即時ワードの処理を抑制して、定義中のワードの実行時意味論に含まれるように「延期」するのが
 @<hidx>{POSTPONE}@<code>{POSTPONE} ワードだ。@<code>{POSTPONE} ワード自体も即時ワードであり、
-直後のソースコードから 1 単語をワード名としてパースして、それを延期して呼び出すように
-コンパイルさせる。
+直後のソースコードから 1 単語をワード名としてパースして、それを延期して呼び出すようにコンパイルさせる。
 
 @<list>{postpone}では、@<list>{state}で定義した @<code>{check-state} ワードを用いて @<code>{POSTPONE} ワードの挙動を確認している。
 
@@ -90,6 +89,8 @@ after-compilation
 Other state
 Other state
 //}
+
+@<code>{check-state} ワードの呼び出しが、@<code>{new-word} ワードの実行時まで延期されていることがわかる。
 
 == EVALUATE とパーサ
 
