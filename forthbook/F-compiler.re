@@ -76,6 +76,21 @@ Compilation state
 直後のソースコードから 1 単語をワード名としてパースして、それを延期して呼び出すように
 コンパイルさせる。
 
+@<list>{postpone}では、@<list>{state}で定義した @<code>{check-state} ワードを用いて @<code>{POSTPONE} ワードの挙動を確認している。
+
+//list[postpone][POSTPONE][forth]{
+: after-compilation  POSTPONE check-state ;
+: new-word  after-compilation ;
+
+new-word CR
+after-compilation
+//}
+
+//emlist[実行結果]{
+Other state
+Other state
+//}
+
 == EVALUATE とパーサ
 
 文字列をそのままソースコードとして解釈実行できてしまうのが @<code>{EVALUATE} ワードだ。
