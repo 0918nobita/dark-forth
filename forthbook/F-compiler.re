@@ -34,10 +34,47 @@ FORTH においては「コンパイル状態の処理系に対して影響を�
 @<list>{immediate} を、ソースファイルに記述するのではなく対話環境で 1 行ずつ入力して実行してみてほしい。
 
 //list[immediate][][forth]{
+: say-hello  ." HELLO" ; IMMEDIATE
+: new-word
+  say-hello
+;
+//}
 
+@<code>{new-word} のコンパイル中、@<code>{say-hello} を入力して確定したときに @<code>{HELLO} と出力されるはずだ。
+コンパイル状態で呼び出しが発生していることがわかる。
+
+この @<code>{new-word} ワードは、解釈状態でも呼び出せる。
+即時ワードで、自らが呼び出されているときにコンパイル状態なのか解釈状態なのかを判別するには @<hidx>{STATE}@<code>{STATE ( -- a-addr )} ワードを用いる。
+@<code>{STATE} ワードが返すアドレスは「処理系の状態を表す値の書き込み先」であり、@<code>{@} ワードで参照先の値を取り出してその時々での処理系の状態を取得できる。
+@<code>{-1} ならばコンパイル状態であり、その他の値については処理系依存である。
+つまり @<code>{STATE} ワードで確実に判別できるのは「コンパイル状態であるか否か」だけである。
+
+//list[state][STATE ワードで処理系の状態を取得する][forth]{
+: check-state
+  STATE @ -1 =
+  IF
+    ." Compilation state"
+  ELSE
+    ." Other state"
+  THEN
+; IMMEDIATE
+
+check-state
+
+: new-word  check-state ;
+//}
+
+//emlist[実行結果]{
+Other state
+Compilation state
 //}
 
 == POSTPONE
+
+即時ワードの処理を抑制して、定義中のワードの実行時意味論に含まれるように「延期」するのが
+@<hidx>{POSTPONE}@<code>{POSTPONE} ワードだ。@<code>{POSTPONE} ワード自体も即時ワードであり、
+直後のソースコードから 1 単語をワード名としてパースして、それを延期して呼び出すように
+コンパイルさせる。
 
 == EVALUATE とパーサ
 
@@ -57,9 +94,3 @@ evaluated
 //list[parser][][forth]{
 PARSE WORD
 //}
-
-===[column] 即時ワードの命名法
-
-一般的には、即時ワードには @<code>{[xxx]} のような形式の名前をつける。
-
-===[/column]
