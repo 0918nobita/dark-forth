@@ -99,7 +99,7 @@ Other state
 (@<code>{VALUE} や @<code>{CONSTANT} ワードのように) 直後のソースコードをパースして
 利用する方法もある。
 
-//list[eval][][forth]{
+//list[eval][先に文字列をスタック上に用意しておく例][forth]{
 S\" .\" evaluated\"" EVALUATE
 //}
 
@@ -107,6 +107,18 @@ S\" .\" evaluated\"" EVALUATE
 evaluated
 //}
 
-//list[parser][][forth]{
-WORD
+直後のソースコードをパースするための最も低レベルなワードが @<hidx>{PARSE}@<code>{PARSE ( char -- c-addr u )} ワードだ。
+@<code>{PARSE} ワードは、データスタックのトップに積まれている ASCII コードと対応する文字をデリミタとして、
+直後のソースコードをパースする。パース結果は文字列としてデータスタックにプッシュされる。
+
+最後に、@<code>{!} (ASCII コードは @<code>{33}) をデリミタとするパーサを作ってみよう。
+
+//list[parser][! までをパースするパーサ][forth]{
+: !parser  33 PARSE ;
+
+!parser Thank you for reading! TYPE
+//}
+
+//emlist[実行結果]{
+Thank you for reading
 //}
