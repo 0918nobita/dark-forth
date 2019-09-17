@@ -94,7 +94,7 @@ Other state
 
 == EVALUATE とパーサ
 
-文字列をそのままソースコードとして解釈実行できてしまうのが @<code>{EVALUATE} ワードだ。
+文字列をそのままソースコードとして解釈実行できてしまうのが @<hidx>{EVALUATE}@<code>{EVALUATE} ワードだ。
 スタックに文字列 (メモリ上の先頭アドレス + 文字数) を積んでおけば動作するが、
 (@<code>{VALUE} や @<code>{CONSTANT} ワードのように) 直後のソースコードをパースして
 利用する方法もある。
@@ -108,5 +108,5 @@ evaluated
 //}
 
 //list[parser][][forth]{
-PARSE WORD
+WORD
 //}
